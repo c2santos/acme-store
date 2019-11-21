@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.acmestore.domain.Categoria;
+import com.acmestore.dto.CategoriaDTO;
 import com.acmestore.exceptions.DataIntegrityException;
 import com.acmestore.exceptions.ObjectNotFoundException;
 import com.acmestore.repository.CategoriaRepository;
@@ -61,6 +62,10 @@ public class CategoriaService {
 		
 		return repo.findAll(pageRequest);
 		
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
 	}
 
 }
