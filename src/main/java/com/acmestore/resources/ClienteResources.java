@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.acmestore.domain.Cliente;
 import com.acmestore.dto.ClienteDTO;
+import com.acmestore.dto.ClienteNewDTO;
 import com.acmestore.services.ClienteService;
 
 @RestController
@@ -35,6 +36,16 @@ public class ClienteResources {
 		
 		
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert (@Valid @RequestBody ClienteNewDTO objDTO){
+		Cliente obj = service.fromDTO(objDTO);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		
+		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)

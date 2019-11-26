@@ -2,29 +2,29 @@ package com.acmestore.exception;
 
 import java.io.Serializable;
 
-public class FieldMessenger implements Serializable{
+public class FieldMessage implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private String fieldname;
+	private String fieldName;
 	private String message;
 	
-	public FieldMessenger() {
+	public FieldMessage() {
 		super();
 	}
 
-	public FieldMessenger(String fieldname, String message) {
+	public FieldMessage(String fieldname, String message) {
 		super();
-		this.fieldname = fieldname;
+		this.fieldName = fieldname;
 		this.message = message;
 	}
 
-	public String getFieldname() {
-		return fieldname;
+	public String getFieldName() {
+		return fieldName;
 	}
 
-	public void setFieldname(String fieldname) {
-		this.fieldname = fieldname;
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 
 	public String getMessage() {
